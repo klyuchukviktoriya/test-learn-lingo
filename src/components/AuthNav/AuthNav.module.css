@@ -1,0 +1,23 @@
+.auth {
+    display: flex;
+    gap: 16px;
+}
+
+.log {
+background-color: transparent;
+border: none;
+display: flex;
+align-items: center;
+gap: 8px;
+color: #e2e2e2;
+font-family: Roboto;
+font-size: 16px;
+font-style: normal;
+font-weight: 700;
+line-height: 20px; /* 125% */
+
+}
+
+.logIcon{
+    fill: #E0A39A;
+}

@@ -1,0 +1,16 @@
+.bigButton {
+    border-radius: 12px;
+background: #E0A39A;
+border: none;
+color: #121417;
+font-family: Roboto;
+font-size: 18px;
+font-style: normal;
+font-weight: 700;
+line-height: 28px; /* 155.556% */
+display: flex;
+align-items:center;
+justify-content: center;
+box-shadow: 
+3px 3px 10px rgba(255, 255, 255, 0.447); /* Внешняя тень белого цвета */
+}
