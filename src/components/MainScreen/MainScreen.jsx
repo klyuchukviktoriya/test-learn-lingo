@@ -7,8 +7,8 @@ export default function MainScreen() {
     <div className={css.main}>
       <Spline
         className={css.spline}
-        style={{ width: "1600px", height: "100vh" }}
-        scene="https://prod.spline.design/6swNHWyDMtlnxsdL/scene.splinecode"
+        style={{ width: "1240px", height: "790px" }}
+        scene="/models/room_relaxing_copy_copy.spline"
       />
       <div className={css.mainBlock}>
         <h2>

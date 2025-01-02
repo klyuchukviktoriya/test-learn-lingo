@@ -1,21 +1,17 @@
 .link {
-color: #e2e2e2;
-text-decoration: none;
+  color: #e2e2e2;
+  text-decoration: none;
 }
 
-.active{
-    text-decoration-line: underline;
-    text-decoration-style: solid;
-    text-underline-offset: 12px;
-    text-decoration-thickness: 2px;
-    text-decoration-color: #e0a39a85;
+.active {
+  text-decoration-line: underline;
+  text-decoration-style: solid;
+  text-underline-offset: 12px;
+  text-decoration-thickness: 2px;
+  text-decoration-color: #e0a39a85;
 }
 
-.header{
-
-}
-
-.linkwrapper{
-display: flex;
-gap: 28px;
+.linkwrapper {
+  display: flex;
+  gap: 28px;
 }
