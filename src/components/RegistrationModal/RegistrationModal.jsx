@@ -2,9 +2,11 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import Modal from "../Modal/Modal.jsx";
 import BigButton from "../BigButton/BigButton.jsx";
-import InputField from "../InputField/InputField.jsx";
 import css from "./RegistrationModal.module.css";
-import { validationSchema } from "../../constants/ValidationSchema.jsx";
+import { useState } from "react";
+import InputField from "../InputField/InputField.jsx";
+import { registerUser } from "../firebase/firebaseAuth.js";
+import { registerValidationSchema } from "../../constants/registerValidationSchema";
 
 export default function RegistrationModal({ isOpen, onClose }) {
   const {
@@ -12,11 +14,22 @@ export default function RegistrationModal({ isOpen, onClose }) {
     handleSubmit,
     formState: { errors },
   } = useForm({
-    resolver: yupResolver(validationSchema),
+    resolver: yupResolver(registerValidationSchema),
   });
 
-  const handleSignUp = data => {
-    console.log("Sign Up Data:", data);
+  const [isLoading, setIsLoading] = useState(false);
+
+  const handleSignUp = async data => {
+    try {
+      setIsLoading(true);
+      await registerUser(data.email, data.password, data.name);
+      alert("Registration successful!");
+      onClose();
+    } catch (error) {
+      alert(`Error: ${error.message}`);
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
@@ -33,7 +46,7 @@ export default function RegistrationModal({ isOpen, onClose }) {
             placeholder="Name"
             register={register("name")}
             error={errors.name?.message}
-            autoComplete="name"
+            autoComplete="off"
           />
           <InputField
             type="email"
@@ -57,6 +70,7 @@ export default function RegistrationModal({ isOpen, onClose }) {
           background="#E0A39A"
           width="438px"
           height="60px"
+          disabled={isLoading}
         />
       </form>
     </Modal>

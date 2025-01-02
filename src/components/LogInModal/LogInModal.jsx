@@ -4,7 +4,8 @@ import Modal from "../Modal/Modal.jsx";
 import BigButton from "../BigButton/BigButton.jsx";
 import css from "./LogInModal.module.css";
 import InputField from "../InputField/InputField.jsx";
-import { validationSchema } from "../../constants/ValidationSchema.jsx";
+import { logInUser } from "../firebase/firebaseAuth.js";
+import { logInValidationSchema } from "../../constants/logInValidationSchema.jsx";
 
 export default function LogInModal({ isOpen, onClose }) {
   const {
@@ -12,11 +13,19 @@ export default function LogInModal({ isOpen, onClose }) {
     handleSubmit,
     formState: { errors },
   } = useForm({
-    resolver: yupResolver(validationSchema),
+    resolver: yupResolver(logInValidationSchema),
   });
 
-  const handleLogIn = data => {
-    console.log("Log In Data:", data);
+  const handleLogIn = async data => {
+    try {
+      const user = await logInUser(data.email, data.password);
+      console.log("User logged in:", user);
+      alert("Login successful!");
+      onClose();
+    } catch (error) {
+      console.error("Log In Error:", error.message);
+      alert(`Error: ${error.message}`);
+    }
   };
 
   return (
