@@ -1,3 +1,16 @@
 .homePage {
-    margin: 0 auto;
+    /* margin: 0 auto; */
+}
+
+.teachers {
+    padding: 96px 0;
+    position: relative;
+}
+
+.splineTeachers{
+    position: absolute;
+   z-index: -1;
+   top: 400px;
+   left: 50%;
+   transform: translate(-50%, -50%); 
 }

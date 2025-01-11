@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import { Outlet } from "react-router-dom";
 import { Suspense } from "react";
 import Navigation from "../Navigation/Navigation.jsx";
@@ -6,9 +7,28 @@ import css from "./Layout.module.css";
 import AuthNav from "../AuthNav/AuthNav.jsx";
 
 export default function Layout() {
+
+    const [isScrolled, setIsScrolled] = useState(false);
+
+    useEffect(() => {
+      const handleScroll = () => {
+        if (window.scrollY > 50) { // Измените 50 на нужное значение пикселей
+          setIsScrolled(true);
+        } else {
+          setIsScrolled(false);
+        }
+      };
+  
+      window.addEventListener("scroll", handleScroll);
+  
+      // Удаляем обработчик при размонтировании компонента
+      return () => window.removeEventListener("scroll", handleScroll);
+    }, []);
+
+    
   return (
     <>
-      <div className={css.header}>
+          <div className={`${css.header} ${isScrolled ? css.scrolled : css.transparent}`}>
         <Logo />
         <Navigation />
         <AuthNav />

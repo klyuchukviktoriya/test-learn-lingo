@@ -4,29 +4,32 @@ import Modal from "../Modal/Modal.jsx";
 import BigButton from "../BigButton/BigButton.jsx";
 import css from "./LogInModal.module.css";
 import InputField from "../InputField/InputField.jsx";
-import { logInUser } from "../firebase/firebaseAuth.js";
+import { useDispatch } from "react-redux";
+// import { logInUser } from "../firebase/firebaseAuth.js";
 import { logInValidationSchema } from "../../constants/logInValidationSchema.jsx";
+import { logIn } from "../../redux/auth/operations.js";
 
 export default function LogInModal({ isOpen, onClose }) {
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm({
-    resolver: yupResolver(logInValidationSchema),
-  });
+    const dispatch = useDispatch();
 
-  const handleLogIn = async data => {
-    try {
-      const user = await logInUser(data.email, data.password);
-      console.log("User logged in:", user);
-      alert("Login successful!");
-      onClose();
-    } catch (error) {
-      console.error("Log In Error:", error.message);
-      alert(`Error: ${error.message}`);
-    }
-  };
+    const {
+      register,
+      handleSubmit,
+      formState: { errors },
+    } = useForm({
+      resolver: yupResolver(logInValidationSchema),
+    });
+  
+    const handleLogIn = async (data) => {
+      try {
+        await dispatch(logIn(data)); // Вызываем Redux-операцию логина
+        // alert("Login successful!");
+        onClose(); // Закрываем модалку
+      } catch (error) {
+        console.error("Log In Error:", error.message);
+        alert(`Error: ${error.message}`);
+      }
+    };
 
   return (
     <Modal

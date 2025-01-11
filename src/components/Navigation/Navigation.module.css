@@ -12,6 +12,7 @@
 }
 
 .linkwrapper {
+    width: 260px;
   display: flex;
   gap: 28px;
 }

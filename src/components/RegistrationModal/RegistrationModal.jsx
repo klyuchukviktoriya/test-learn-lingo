@@ -5,12 +5,13 @@ import BigButton from "../BigButton/BigButton.jsx";
 import css from "./RegistrationModal.module.css";
 import { useState } from "react";
 import InputField from "../InputField/InputField.jsx";
-import { registerUser } from "../firebase/firebaseAuth.js";
-import { registerValidationSchema } from "../../constants/registerValidationSchema";
+import { useDispatch } from "react-redux";
+import { register } from "../../redux/auth/operations.js";
+import { registerValidationSchema } from "../../constants/registerValidationSchema.jsx";
 
 export default function RegistrationModal({ isOpen, onClose }) {
   const {
-    register,
+    register: formRegister,
     handleSubmit,
     formState: { errors },
   } = useForm({
@@ -18,15 +19,16 @@ export default function RegistrationModal({ isOpen, onClose }) {
   });
 
   const [isLoading, setIsLoading] = useState(false);
+  const dispatch = useDispatch();
 
   const handleSignUp = async data => {
     try {
       setIsLoading(true);
-      await registerUser(data.email, data.password, data.name);
-      alert("Registration successful!");
+      await dispatch(register({ email: data.email, password: data.password, name: data.name })).unwrap();
+      // alert("Registration successful!");
       onClose();
     } catch (error) {
-      alert(`Error: ${error.message}`);
+      alert(`Error: ${error}`);
     } finally {
       setIsLoading(false);
     }
@@ -44,21 +46,21 @@ export default function RegistrationModal({ isOpen, onClose }) {
           <InputField
             type="text"
             placeholder="Name"
-            register={register("name")}
+            register={formRegister("name")}
             error={errors.name?.message}
             autoComplete="off"
           />
           <InputField
             type="email"
             placeholder="Email"
-            register={register("email")}
+            register={formRegister("email")}
             error={errors.email?.message}
             autoComplete="email"
           />
           <InputField
             type="password"
             placeholder="Password"
-            register={register("password")}
+            register={formRegister("password")}
             error={errors.password?.message}
             autoComplete="new-password"
           />

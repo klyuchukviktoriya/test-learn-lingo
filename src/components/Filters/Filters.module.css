@@ -1,0 +1,48 @@
+.filters {
+    width: 1184px;
+    margin: 0 auto;
+    display: flex;
+    gap: 20px;
+    margin-bottom: 32px;
+}
+
+.filters li{
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.filters li label{
+    color: rgb(138, 138, 137);
+font-family: Roboto;
+font-size: 14px;
+font-style: normal;
+font-weight: 500;
+line-height: 1.28;
+}
+
+.filters li select{
+    color: #090909;
+font-family: Roboto;
+font-size: 18px;
+font-style: normal;
+font-weight: 500;
+line-height: 1.11;
+border: 14px solid #ffffff;
+border-radius: 14px;
+background-color: #ffffff;
+}
+
+
+:global(#language) {
+    width: 221px;
+  }
+  
+  :global(#level) {
+    width: 198px;
+  }
+  
+  :global(#price) {
+    width: 124px;
+  }
+  

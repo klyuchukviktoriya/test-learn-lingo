@@ -16,7 +16,7 @@
   width: 720px;
   flex-shrink: 0;
   border-radius: 30px;
-  background: rgba(255, 255, 255, 0.1);
+  background-color: rgba(10, 10, 10, 0.4);
   box-shadow: 0px 4px 4px 0px rgba(255, 255, 255, 0.15) inset,
     0px 0px 68px 0px rgba(255, 255, 255, 0.05) inset;
   backdrop-filter: blur(24px);
@@ -51,7 +51,7 @@
   transform: translateX(-50%);
   width: 1440px;
   border-radius: 30px;
-  background: rgba(255, 255, 255, 0.1);
+  background-color: rgba(10, 10, 10, 0.4);
   box-shadow: 0px 4px 4px 0px rgba(255, 255, 255, 0.15) inset,
     0px 0px 68px 0px rgba(255, 255, 255, 0.05) inset;
   backdrop-filter: blur(24px);
