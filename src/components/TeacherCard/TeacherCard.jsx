@@ -61,7 +61,7 @@ export default function TeacherCard({ teacher }) {
             alt={`${teacher.name} ${teacher.surname}`}
           />
           <svg width="12" height="12" className={css.online}>
-            <use href="public/sprite.svg#online" />
+            <use href="/sprite.svg#online" />
           </svg>
         </div>
 

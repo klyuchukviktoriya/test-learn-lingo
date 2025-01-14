@@ -30,7 +30,7 @@ export default function AuthNav() {
       {isLoggedIn ? (
         <>
           <button className={css.log} onClick={handleLogOut}>
-            <Icon id="#logout" className="logIcon" width="20" height="20"/>;<span>Log out</span>
+            <Icon id="#logout" className="logIcon" width="20" height="20"/><span>Log out</span>
           </button>
           <p className={css.hello}>Hello, {user?.displayName || "User"}</p>
         </>
@@ -40,7 +40,7 @@ export default function AuthNav() {
         <>
           <button className={css.log} onClick={() => setIsLogInOpen(true)}>
             <svg width="20" height="20" className={css.logIcon}>
-              <use href="public/sprite.svg#login" />
+              <use href="/sprite.svg#login" />
             </svg>
             <span>Log in</span>
           </button>
