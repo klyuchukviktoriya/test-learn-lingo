@@ -1,5 +1,5 @@
 .card {
-    margin: 0 auto 32px;
+  margin: 0 auto 32px;
   width: 1184px;
   padding: 24px;
   display: flex;
@@ -9,7 +9,6 @@
   box-shadow: 0px 4px 4px 0px rgba(255, 255, 255, 0.15) inset,
     0px 0px 68px 0px rgba(255, 255, 255, 0.05) inset;
   backdrop-filter: blur(24px);
-  /* margin-bottom: 32px; */
 }
 
 .cardImg {
@@ -34,124 +33,151 @@
   position: absolute;
   top: 16px;
   right: 20px;
-  /* stroke:#ffffff1a; */
 }
 
 .cardContent {
-    width: 968px;
+  width: 968px;
   display: flex;
   gap: 32px;
   flex-direction: column;
   color: #e2e2e2;
 }
 
-.cardMain{
-
-    display: flex;
-    justify-content: space-between;
-   
+.cardMain {
+  display: flex;
+  justify-content: space-between;
 }
 
-.cardMain h2{
-    color: #e2e2e2;
-font-family: Roboto;
-font-size: 24px;
-font-style: normal;
-font-weight: 500;
-line-height: 24px; /* 100% */
+.cardMain h2 {
+  color: #e2e2e2;
+  font-family: Roboto;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 1;
 }
 
-.cardMain h2 span{
-    color: #8A8A89;
-    font-family: Roboto;
-    font-size: 16px;
-    font-style: normal;
-    font-weight: 500;
-    line-height: 24px; /* 150% */}
-
-
-
-    .cardMainRight{
-    display: flex;
-    gap: 64px;
-    /* max-width: 720px; */
-    height: 26px;
-   
-}
-.cardMainRightInfo{
-
-   display: flex;
-   gap: 16px;
-font-weight: 500;
-/* line-height: 1.5; */
-    /* max-width: 720px; */
-
+.cardMain h2 span {
+  color: #8a8a89;
+  font-family: Roboto;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 1.5;
 }
 
-.cardMainRightInfo p{
-    display: flex;
- align-items: center;
-
- }
-
- .cardMainRightInfo p svg{
-    margin-right: 8px;
- }
-
- .cardMainRightInfo div{
-    width: 1px;
-    background-color: #8A8A89;
-    height: 16px;
-margin: auto 0;
- }
-
-
- .price{
-    color: #38CD3E;
-    font-weight: 500;
-    line-height: 24px;
- }
-
- .cardDescription{
-display: flex;
-flex-direction: column;
-gap: 16px;
- }
-
-.cardDescriptionText{
-    color: #e2e2e2;
-    font-family: Roboto;
-    font-size: 16px;
-    font-style: normal;
-    font-weight: 500;
-    line-height: 24px;
+.cardMainRight {
+  display: flex;
+  gap: 64px;
+  height: 26px;
+}
+.cardMainRightInfo {
+  display: flex;
+  gap: 16px;
+  font-weight: 500;
 }
 
-.cardDescriptionText span{
-    color: #8A8A89;
-font-family: Roboto;
-font-size: 16px;
-font-style: normal;
-font-weight: 500;
-line-height: 24px; /* 150% */
+.cardMainRightInfo p {
+  display: flex;
+  align-items: center;
 }
 
-.cardDescription button{
-background-color: transparent;
-border: none;
-text-decoration: underline;
-color: #e2e2e2;
-width: 78px;
-text-align: left;
-font-family: Roboto;
-font-size: 16px;
-font-style: normal;
-font-weight: 500;
-line-height: 24px; /* 150% */
+.cardMainRightInfo p svg {
+  margin-right: 8px;
 }
 
-.rewies{
-    display: flex;
-    gap: 32px;
-    flex-direction: column;
+.cardMainRightInfo div {
+  width: 1px;
+  background-color: #8a8a89;
+  height: 16px;
+  margin: auto 0;
+}
+
+.price {
+  color: #38cd3e;
+  font-weight: 500;
+  line-height: 24px;
+}
+
+.cardDescription {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.cardDescriptionText li {
+  color: #e2e2e2;
+  font-family: Roboto;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 24px;
+}
+
+.cardDescriptionText span {
+  color: #8a8a89;
+  font-family: Roboto;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 1.5;
+}
+
+.showMore {
+  background-color: transparent;
+  border: none;
+  text-decoration: underline;
+  color: #e2e2e2;
+  width: 78px;
+  text-align: left;
+  font-family: Roboto;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 1.5;
+  transition: all 0.3s ease;
+}
+
+.showMore:hover {
+  color: #e2e2e25f;
+}
+
+.rewies {
+  display: flex;
+  gap: 32px;
+  flex-direction: column;
+  color: #090909;
+  font-weight: 500;
+  line-height: 1.5;
+  margin-right: 8px;
+}
+
+.rewiesBlock {
+  padding: 20px;
+  background-color: #e0a39a8d;
+  border-radius: 16px;
+  box-shadow: 3px 3px 10px rgba(255, 255, 255, 0.3);
+}
+
+.rewiesBlock div {
+  margin-bottom: 16px;
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.levels {
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+}
+
+.levels li {
+  display: flex;
+  padding: 8px 12px;
+  justify-content: center;
+  align-items: center;
+  gap: 4px;
+  border-radius: 35px;
+  border: 1px solid rgba(186, 186, 186, 0.2);
 }

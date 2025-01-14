@@ -1,9 +1,14 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  teachers: [], // Массив учителей
+  teachers: [],
   isLoading: false,
   error: null,
+  filters: {
+    language: "",
+    level: "",
+    price_per_hour: "",
+  },
 };
 
 const teachersSlice = createSlice({
@@ -19,9 +24,20 @@ const teachersSlice = createSlice({
     setError(state, action) {
       state.error = action.payload;
     },
+    setFilter(state, action) {
+      const { name, value } = action.payload;
+      state.filters[name] = value;
+    },
+    resetFilters(state) {
+      state.filters = {
+        language: "",
+        level: "",
+        price_per_hour: "",
+      };
+    },
   },
 });
 
-export const { setTeachers, setLoading, setError } = teachersSlice.actions;
-
+export const { setTeachers, setLoading, setError, setFilter, resetFilters } =
+  teachersSlice.actions;
 export const teachersReducer = teachersSlice.reducer;

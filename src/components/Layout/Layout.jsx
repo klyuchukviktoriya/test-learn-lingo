@@ -7,28 +7,28 @@ import css from "./Layout.module.css";
 import AuthNav from "../AuthNav/AuthNav.jsx";
 
 export default function Layout() {
+  const [isScrolled, setIsScrolled] = useState(false);
 
-    const [isScrolled, setIsScrolled] = useState(false);
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 50) {
+        setIsScrolled(true);
+      } else {
+        setIsScrolled(false);
+      }
+    };
 
-    useEffect(() => {
-      const handleScroll = () => {
-        if (window.scrollY > 50) { // Измените 50 на нужное значение пикселей
-          setIsScrolled(true);
-        } else {
-          setIsScrolled(false);
-        }
-      };
-  
-      window.addEventListener("scroll", handleScroll);
-  
-      // Удаляем обработчик при размонтировании компонента
-      return () => window.removeEventListener("scroll", handleScroll);
-    }, []);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
-    
   return (
     <>
-          <div className={`${css.header} ${isScrolled ? css.scrolled : css.transparent}`}>
+      <div
+        className={`${css.header} ${
+          isScrolled ? css.scrolled : css.transparent
+        }`}
+      >
         <Logo />
         <Navigation />
         <AuthNav />

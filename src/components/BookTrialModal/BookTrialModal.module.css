@@ -1,0 +1,50 @@
+.teacherInfo {
+  display: flex;
+  gap: 14px;
+  margin-top: -20px;
+  margin-bottom: 40px;
+}
+
+.teacherLabel {
+  color: #8a8a89;
+  font-family: Roboto;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 1.33;
+}
+
+.teacherName {
+  color: #e2e2e2;
+  line-height: 1.5;
+}
+
+.reasonSection {
+}
+
+.reasonTitle {
+  color: #e2e2e2;
+  font-family: Roboto;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 1.33;
+  margin-bottom: 21px;
+}
+.radioGroup {
+  display: flex;
+  gap: 18px;
+  margin-bottom: 40px;
+  flex-direction: column;
+}
+
+.formInputs {
+  margin-bottom: 40px;
+  display: flex;
+  gap: 20px;
+  flex-direction: column;
+}
+
+.error {
+  color: #e0a39a;
+}

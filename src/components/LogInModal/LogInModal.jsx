@@ -4,32 +4,30 @@ import Modal from "../Modal/Modal.jsx";
 import BigButton from "../BigButton/BigButton.jsx";
 import css from "./LogInModal.module.css";
 import InputField from "../InputField/InputField.jsx";
-import { useDispatch } from "react-redux";
-// import { logInUser } from "../firebase/firebaseAuth.js";
-import { logInValidationSchema } from "../../constants/logInValidationSchema.jsx";
+import { useDispatch, useSelector } from "react-redux";
 import { logIn } from "../../redux/auth/operations.js";
+import { logInValidationSchema } from "../../constants/logInValidationSchema.jsx";
 
 export default function LogInModal({ isOpen, onClose }) {
-    const dispatch = useDispatch();
+  const dispatch = useDispatch();
+  const error = useSelector(state => state.auth.error);
 
-    const {
-      register,
-      handleSubmit,
-      formState: { errors },
-    } = useForm({
-      resolver: yupResolver(logInValidationSchema),
-    });
-  
-    const handleLogIn = async (data) => {
-      try {
-        await dispatch(logIn(data)); // Вызываем Redux-операцию логина
-        // alert("Login successful!");
-        onClose(); // Закрываем модалку
-      } catch (error) {
-        console.error("Log In Error:", error.message);
-        alert(`Error: ${error.message}`);
-      }
-    };
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({
+    resolver: yupResolver(logInValidationSchema),
+  });
+
+  const handleLogIn = async data => {
+    try {
+      await dispatch(logIn(data)).unwrap();
+      onClose();
+    } catch (err) {
+      console.error("Login error:", err);
+    }
+  };
 
   return (
     <Modal
@@ -45,17 +43,16 @@ export default function LogInModal({ isOpen, onClose }) {
             placeholder="Email"
             register={register("email")}
             error={errors.email?.message}
-            autoComplete="email"
           />
-
           <InputField
             type="password"
             placeholder="Password"
             register={register("password")}
             error={errors.password?.message}
-            autoComplete="current-password"
           />
         </div>
+
+        {error && <p className={css.serverError}>{error}</p>}
 
         <BigButton
           title="Log In"

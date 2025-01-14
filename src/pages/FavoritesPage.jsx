@@ -1,23 +1,41 @@
-// import { useSelector } from "react-redux";
-// import { selectFavorites } from "../../redux/favorites/favoritesSlice.js";
-// // import TeacherCard from "../TeacherCard/TeacherCard";
-// import css from "./FavoritesPage.module.css";
+import { useSelector } from "react-redux";
+import css from "./pages.module.css";
+import TeacherCard from "../components/TeacherCard/TeacherCard.jsx";
+import { selectFavorites } from "../redux/favorites/slice.js";
+import BigButton from "../components/BigButton/BigButton.jsx";
+import { useState } from "react";
 
-// export default function FavoritesPage() {
-//   const favorites = useSelector(selectFavorites);
+export default function FavoritesPage() {
+  const favorites = useSelector(selectFavorites);
+  const [visibleCount, setVisibleCount] = useState(4);
 
-//   return (
-//     <div className={css.favorites}>
-//       <h1>Your Favorites</h1>
-//       {favorites.length === 0 ? (
-//         <p>You have no favorite teachers yet.</p>
-//       ) : (
-//         <div className={css.cardContainer}>
-//           {/* {favorites.map(teacher => (
-//             <TeacherCard key={teacher.id} teacher={teacher} />
-//           ))} */}
-//         </div>
-//       )}
-//     </div>
-//   );
-// }
+  const handleLoadMore = () => {
+    setVisibleCount(prevCount => prevCount + 4);
+  };
+
+  return (
+    <div className={css.teachers}>
+      {favorites.length > 0 ? (
+        <>
+          <div className={css.teachersList}>
+            {favorites.slice(0, visibleCount).map((teacher, index) => (
+              <TeacherCard key={index} teacher={teacher} />
+            ))}
+          </div>
+          {visibleCount < favorites.length && (
+            <BigButton
+              title="Load more"
+              width="183px"
+              height="60px"
+              type="button"
+              margin="0 auto"
+              onClick={handleLoadMore}
+            />
+          )}
+        </>
+      ) : (
+        <p className={css.noFavorites}>You have no favorites yet.</p>
+      )}
+    </div>
+  );
+}

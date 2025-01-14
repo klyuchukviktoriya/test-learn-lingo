@@ -13,6 +13,7 @@ export default function RegistrationModal({ isOpen, onClose }) {
   const {
     register: formRegister,
     handleSubmit,
+    setError,
     formState: { errors },
   } = useForm({
     resolver: yupResolver(registerValidationSchema),
@@ -24,11 +25,26 @@ export default function RegistrationModal({ isOpen, onClose }) {
   const handleSignUp = async data => {
     try {
       setIsLoading(true);
-      await dispatch(register({ email: data.email, password: data.password, name: data.name })).unwrap();
-      // alert("Registration successful!");
+      await dispatch(
+        register({
+          email: data.email,
+          password: data.password,
+          name: data.name,
+        })
+      ).unwrap();
       onClose();
     } catch (error) {
-      alert(`Error: ${error}`);
+      if (error === "Firebase: Error (auth/email-already-in-use).") {
+        setError("email", {
+          type: "manual",
+          message: "This email is already in use.",
+        });
+      } else {
+        setError("email", {
+          type: "manual",
+          message: "Registration failed. Please try again.",
+        });
+      }
     } finally {
       setIsLoading(false);
     }

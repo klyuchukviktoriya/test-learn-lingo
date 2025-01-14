@@ -1,5 +1,4 @@
 .auth {
-    width: 260px;
   display: flex;
   gap: 16px;
 }
@@ -16,6 +15,11 @@
   font-style: normal;
   font-weight: 700;
   line-height: 1.25;
+  transition: all 0.3s ease;
+}
+
+.log:hover {
+  color: #e2e2e25f;
 }
 
 .logIcon {
@@ -23,12 +27,12 @@
 }
 
 .hello {
-    font-size: 20px;
-    font-weight: 500;
-    font-style: italic;
-    border-radius: 8px;
-    color: #090909;
-    background-color: #f2c0bd;
-    box-shadow: 3px 3px 10px rgba(255, 255, 255, 0.3);
-    padding: 4px 8px;
+  font-size: 20px;
+  font-weight: 500;
+  font-style: italic;
+  border-radius: 8px;
+  color: #090909;
+  background-color: #e0a39a;
+  box-shadow: 3px 3px 10px rgba(255, 255, 255, 0.3);
+  padding: 4px 8px;
 }

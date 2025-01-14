@@ -14,16 +14,15 @@
 }
 
 .header.transparent {
-    background-color: transparent;
-  }
-  
-  .header.scrolled {
-    background-color: #090909;
-    padding: 40px 20px;
-    margin: 0 auto;
-    border-bottom-left-radius: 16px;
-    border-bottom-right-radius: 16px;
-    border-bottom: 1px solid #E0A39A;
-    box-shadow: 3px 3px 10px rgba(255, 255, 255, 0.3);
+  background-color: transparent;
+}
 
-  }
+.header.scrolled {
+  background-color: #090909;
+  padding: 40px 20px;
+  margin: 0 auto;
+  border-bottom-left-radius: 16px;
+  border-bottom-right-radius: 16px;
+  border-bottom: 1px solid #e0a39a;
+  box-shadow: 3px 3px 10px rgba(255, 255, 255, 0.3);
+}

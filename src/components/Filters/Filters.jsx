@@ -1,36 +1,74 @@
-import css from  "./Filters.module.css"
+import { useDispatch, useSelector } from "react-redux";
+import css from "./Filters.module.css";
+import { selectTeachers } from "../../redux/teachers/selectors";
+import { setFilter, resetFilters } from "../../redux/teachers/slice";
+import BigButton from "../BigButton/BigButton.jsx";
 export default function Filters() {
+  const dispatch = useDispatch();
+
+  const handleFilterChange = e => {
+    const { name, value } = e.target;
+    dispatch(setFilter({ name, value }));
+  };
+
+  const handleResetFilters = () => {
+    dispatch(resetFilters());
+  };
+
+  const teachers = useSelector(selectTeachers);
+
+  const uniqueLanguages = [
+    ...new Set(teachers.flatMap(teacher => teacher.languages)),
+  ];
+  const uniqueLevels = [
+    ...new Set(teachers.flatMap(teacher => teacher.levels)),
+  ];
+
   return (
-    <ul className={css.filters}>
-      <li>
-        <label htmlFor="language">Languages</label>
-        <select id="language" name="language">
-          <option value="French">French</option>
-          <option value="English">English</option>
-          <option value="German">German</option>
-          <option value="Ukrainian">Ukrainian</option>
-          <option value="Polish">Polish</option>
-        </select>
-      </li>
-      <li>
-        <label htmlFor="level">Level of knowledge</label>
-        <select id="level" name="level">
-          <option value="A1">A1 Beginner</option>
-          <option value="A2">A2 Elementary</option>
-          <option value="B1">B1 Intermediate</option>
-          <option value="B2">B2 Upper-Intermediate</option>
-          <option value="C1">C1 Advanced</option>
-        </select>
-      </li>
-      <li>
-        <label htmlFor="price">Price</label>
-        <select id="price" name="price">
-          <option value="10">10 $</option>
-          <option value="20">20 $</option>
-          <option value="30">30 $</option>
-          <option value="40">40 $</option>
-        </select>
-      </li>
-    </ul>
+    <div className={css.filters}>
+      <ul className={css.filtersUl}>
+        <li>
+          <label htmlFor="language">Languages</label>
+          <select id="language" name="language" onChange={handleFilterChange}>
+            <option value="">All Languages</option>
+            {uniqueLanguages.map((language, index) => (
+              <option key={index} value={language}>
+                {language}
+              </option>
+            ))}
+          </select>
+        </li>
+
+        <li>
+          <label htmlFor="level">Level of knowledge</label>
+          <select id="level" name="level" onChange={handleFilterChange}>
+            <option value="">All Levels</option>
+            {uniqueLevels.map((level, index) => (
+              <option key={index} value={level}>
+                {level}
+              </option>
+            ))}
+          </select>
+        </li>
+
+        <li>
+          <label htmlFor="price">Price</label>
+          <select id="price" name="price" onChange={handleFilterChange}>
+            <option value="">All Prices</option>
+            <option value="0-10">up to 10$</option>
+            <option value="10-20">10$ - 20$</option>
+            <option value="20-30">20$ - 30$</option>
+            <option value="30-40">30$ - 40$</option>
+            <option value="40+">40$ and above</option>
+          </select>
+        </li>
+      </ul>
+      <BigButton
+        className={css.reset}
+        type="button"
+        title="Reset filters"
+        onClick={handleResetFilters}
+      />
+    </div>
   );
 }

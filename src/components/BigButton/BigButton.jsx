@@ -4,14 +4,15 @@ export default function BigButton({
   title,
   width = 166,
   height = 48,
-  background,
+  background = "#e0a39a",
   onClick,
   type,
+  margin,
 }) {
   return (
     <button
       className={css.bigButton}
-      style={{ width, height, background }}
+      style={{ width, height, background, margin }}
       onClick={onClick}
       type={type}
     >

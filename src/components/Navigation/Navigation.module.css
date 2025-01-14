@@ -1,6 +1,11 @@
 .link {
   color: #e2e2e2;
   text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.link:hover {
+  color: #e2e2e25f;
 }
 
 .active {
@@ -12,7 +17,7 @@
 }
 
 .linkwrapper {
-    width: 260px;
+  width: 260px;
   display: flex;
   gap: 28px;
 }

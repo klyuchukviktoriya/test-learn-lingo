@@ -1,6 +1,5 @@
-
-import { createSlice } from '@reduxjs/toolkit';
-import { logIn, logOut, refreshUser, register } from './operations.js';
+import { createSlice } from "@reduxjs/toolkit";
+import { logIn, logOut, refreshUser, register } from "./operations.js";
 
 const initialState = {
   user: null,
@@ -8,24 +7,23 @@ const initialState = {
   isLoading: false,
   error: null,
   isAuthenticated: false,
-  isRefreshing: false, // Новый флаг
+  isRefreshing: false,
 };
 
 const authSlice = createSlice({
-  name: 'auth',
+  name: "auth",
   initialState,
   reducers: {
     resetError(state) {
       state.error = null;
     },
     resetState() {
-      return initialState; // Сбрасывает всё состояние
+      return initialState;
     },
   },
-  extraReducers: (builder) => {
+  extraReducers: builder => {
     builder
-      // Регистрация
-      .addCase(register.pending, (state) => {
+      .addCase(register.pending, state => {
         state.isLoading = true;
         state.error = null;
       })
@@ -36,40 +34,32 @@ const authSlice = createSlice({
           displayName: payload.displayName,
           uid: payload.uid,
         };
-        state.token = null; // Нет токена
         state.isAuthenticated = true;
       })
       .addCase(register.rejected, (state, { payload }) => {
         state.isLoading = false;
-        state.error = payload || "Failed to register";
+        state.error = payload || "Registration failed. Please try again.";
       })
 
-      // Логин
-      .addCase(logIn.pending, (state) => {
+      .addCase(logIn.pending, state => {
         state.isLoading = true;
         state.error = null;
       })
       .addCase(logIn.fulfilled, (state, { payload }) => {
         state.isLoading = false;
-        state.user = {
-            email: payload.email,
-            displayName: payload.displayName,
-            uid: payload.uid,
-        };
+        state.user = payload;
         state.isAuthenticated = true;
-    })
-    
+      })
       .addCase(logIn.rejected, (state, { payload }) => {
         state.isLoading = false;
-        state.error = payload || "Failed to log in";
+        state.error = payload || "Invalid email or password.";
       })
 
-      // Логаут
-      .addCase(logOut.pending, (state) => {
+      .addCase(logOut.pending, state => {
         state.isLoading = true;
         state.error = null;
       })
-      .addCase(logOut.fulfilled, (state) => {
+      .addCase(logOut.fulfilled, state => {
         state.isLoading = false;
         state.user = null;
         state.token = null;
@@ -77,9 +67,10 @@ const authSlice = createSlice({
       })
       .addCase(logOut.rejected, (state, { payload }) => {
         state.isLoading = false;
-        state.error = payload || "Failed to log out";
+        state.error = payload || "Failed to log out. Please try again.";
       })
-      .addCase(refreshUser.pending, (state) => {
+
+      .addCase(refreshUser.pending, state => {
         state.isRefreshing = true;
       })
       .addCase(refreshUser.fulfilled, (state, { payload }) => {
@@ -87,10 +78,9 @@ const authSlice = createSlice({
         state.user = payload;
         state.isAuthenticated = true;
       })
-      .addCase(refreshUser.rejected, (state) => {
+      .addCase(refreshUser.rejected, state => {
         state.isRefreshing = false;
       });
-      
   },
 });
 

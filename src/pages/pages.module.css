@@ -1,16 +1,47 @@
 .homePage {
-    /* margin: 0 auto; */
+  /* margin: 0 auto; */
 }
 
 .teachers {
-    padding: 96px 0;
-    position: relative;
+  padding: 96px 0;
+  position: relative;
 }
 
-.splineTeachers{
-    position: absolute;
-   z-index: -1;
-   top: 400px;
-   left: 50%;
-   transform: translate(-50%, -50%); 
+.splineTeachers {
+  position: absolute;
+  z-index: -1;
+  top: 400px;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.teachersList {
+  margin-bottom: 64px;
+}
+
+.notFound {
+  padding: 40px 0;
+  width: 1440px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  align-items: center;
+  position: relative;
+}
+
+.homeLink {
+  color: #e2e2e2;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.homeLink:hover {
+  color: #e2e2e25f;
+}
+
+.notFound svg {
+  position: absolute;
+  top: 190px;
+  left: 540px;
 }

@@ -1,10 +1,14 @@
 .form {
-    width: 438px;
+  width: 438px;
 }
 
 .formInputs {
-    display: flex;
-    flex-direction: column;
-    gap: 18px;
-    margin-bottom: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  margin-bottom: 40px;
+}
+
+.serverError {
+  color: #e0a39a;
 }

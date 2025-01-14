@@ -1,31 +1,42 @@
 import { useDispatch, useSelector } from "react-redux";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { fetchTeachers } from "../../redux/teachers/operations.js";
-import {
-  selectError,
-  selectIsLoading,
-  selectTeachers,
-} from "../../redux/teachers/selectors.js";
+import { selectFilteredTeachers } from "../../redux/teachers/selectors.js";
 import TeacherCard from "../TeacherCard/TeacherCard.jsx";
+import BigButton from "../BigButton/BigButton.jsx";
+import css from "./Teachers.module.css";
 
 export default function Teachers() {
   const dispatch = useDispatch();
-  const teachers = useSelector(selectTeachers);
-  const isLoading = useSelector(selectIsLoading);
-  const error = useSelector(selectError);
+  const teachers = useSelector(selectFilteredTeachers);
+  const [visibleCount, setVisibleCount] = useState(4);
 
   useEffect(() => {
     dispatch(fetchTeachers());
   }, [dispatch]);
 
-  if (isLoading) return <p>Loading...</p>;
-  if (error) return <p>Error: {error}</p>;
+  const handleLoadMore = () => {
+    setVisibleCount(prevCount => prevCount + 4);
+  };
 
   return (
-    <div>
-      {teachers.map((teacher, index) => (
-        <TeacherCard key={index} teacher={teacher} />
-      ))}
-    </div>
+    <>
+      <div className={css.teachersList}>
+        {teachers.slice(0, visibleCount).map((teacher, index) => (
+          <TeacherCard key={index} teacher={teacher} />
+        ))}
+      </div>
+
+      {visibleCount < teachers.length && (
+        <BigButton
+          title="Load more"
+          width="183px"
+          height="60px"
+          type="button"
+          margin="0 auto"
+          onClick={handleLoadMore}
+        />
+      )}
+    </>
   );
 }
