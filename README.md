@@ -1,4 +1,4 @@
-![Screenshot of my projects' homepage](/public/images/homepage.png)  
+![Screenshot of my projects' homepage](/public/homepage.png)  
 # Test Learn Lingo  
 Hello, my name's Viktoriya Klyuchuk. I'm a frontend developer, and I'm excited to introduce my mini project!  
 
