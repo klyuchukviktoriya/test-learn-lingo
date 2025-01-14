@@ -52,9 +52,30 @@
 }
 
 .reset {
+  border-radius: 12px;
   background: #e0a39a;
+  border: none;
+  color: #090909;
+  font-family: Roboto;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 1.55;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 3px 3px 10px rgba(255, 255, 255, 0.3);
+  opacity: 1;
+  transition: opacity 0.3s ease;
+  width: 120px;
+  height: 48px;
 }
 
 .reset:hover {
-  background: red;
+  opacity: 0.8;
+}
+
+.hidden {
+  opacity: 0;
+  pointer-events: none;
 }

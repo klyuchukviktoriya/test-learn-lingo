@@ -2,9 +2,11 @@ import { useDispatch, useSelector } from "react-redux";
 import css from "./Filters.module.css";
 import { selectTeachers } from "../../redux/teachers/selectors";
 import { setFilter, resetFilters } from "../../redux/teachers/slice";
-import BigButton from "../BigButton/BigButton.jsx";
+
 export default function Filters() {
   const dispatch = useDispatch();
+  const filters = useSelector(state => state.teachers.filters);
+  const teachers = useSelector(selectTeachers);
 
   const handleFilterChange = e => {
     const { name, value } = e.target;
@@ -15,14 +17,17 @@ export default function Filters() {
     dispatch(resetFilters());
   };
 
-  const teachers = useSelector(selectTeachers);
-
   const uniqueLanguages = [
     ...new Set(teachers.flatMap(teacher => teacher.languages)),
   ];
   const uniqueLevels = [
     ...new Set(teachers.flatMap(teacher => teacher.levels)),
   ];
+
+  const areFiltersApplied = Object.values(filters).some(value => value !== "");
+
+  console.log("Filters:", filters);
+  console.log("Are filters applied:", areFiltersApplied);
 
   return (
     <div className={css.filters}>
@@ -63,12 +68,15 @@ export default function Filters() {
           </select>
         </li>
       </ul>
-      <BigButton
-        className={css.reset}
+
+      <button
+        className={`${css.reset} ${areFiltersApplied ? "" : css.hidden}`}
         type="button"
         title="Reset filters"
         onClick={handleResetFilters}
-      />
+      >
+        Reset
+      </button>
     </div>
   );
 }
