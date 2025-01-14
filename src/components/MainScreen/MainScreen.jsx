@@ -41,6 +41,9 @@ export default function MainScreen() {
           <p className={css.text}>Tutor nationalities</p>
         </li>
       </ul>
+      <svg className={css.move} width="150" height="150">
+        <use href="/sprite.svg#move" />
+      </svg>
     </div>
   );
 }

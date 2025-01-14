@@ -10,7 +10,6 @@ import {
   selectIsRefreshing,
   selectUser,
 } from "../../redux/auth/selectors.js";
-import Icon from "../Icon/Icon.jsx";
 
 export default function AuthNav() {
   const dispatch = useDispatch();
@@ -30,7 +29,10 @@ export default function AuthNav() {
       {isLoggedIn ? (
         <>
           <button className={css.log} onClick={handleLogOut}>
-            <Icon id="#logout" className="logIcon" width="20" height="20"/><span>Log out</span>
+            <svg width="20" height="20" className={css.logIcon}>
+              <use href="/sprite.svg#logout" />
+            </svg>
+            <span>Log out</span>
           </button>
           <p className={css.hello}>Hello, {user?.displayName || "User"}</p>
         </>

@@ -4,6 +4,7 @@ import TeacherCard from "../components/TeacherCard/TeacherCard.jsx";
 import { selectFavorites } from "../redux/favorites/slice.js";
 import BigButton from "../components/BigButton/BigButton.jsx";
 import { useState } from "react";
+import Spline from "@splinetool/react-spline";
 
 export default function FavoritesPage() {
   const favorites = useSelector(selectFavorites);
@@ -15,6 +16,11 @@ export default function FavoritesPage() {
 
   return (
     <div className={css.teachers}>
+     <Spline
+        className={css.splineTeachers}
+        style={{ width: "1740px", height: "1000px" }}
+        scene="/models/drag_and_drop_book_pencil_school_copy_copy.spline"
+      />
       {favorites.length > 0 ? (
         <>
           <div className={css.teachersList}>

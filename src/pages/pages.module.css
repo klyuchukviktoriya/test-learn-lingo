@@ -40,8 +40,22 @@
   color: #e2e2e25f;
 }
 
-.notFound svg {
+.click {
   position: absolute;
   top: 190px;
   left: 540px;
+}
+
+.move {
+  position: absolute;
+  top: 460px;
+  left: 1140px;
+}
+
+.spline {
+  /* margin-left: 400px; */
+  border-radius: 32px;
+  position: absolute;
+  top: 160px;
+  z-index: -1;
 }

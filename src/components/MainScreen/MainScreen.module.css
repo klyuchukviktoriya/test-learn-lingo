@@ -5,7 +5,7 @@
 }
 
 .spline {
-  margin: 0 0 0 400px;
+  margin-left: 400px;
   border-radius: 32px;
 }
 
@@ -79,4 +79,10 @@
   font-weight: 400;
   line-height: 1.28;
   width: 85px;
+}
+
+.move {
+  position: absolute;
+  top: 400px;
+  left: 1400px;
 }

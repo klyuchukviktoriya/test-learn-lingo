@@ -76,14 +76,14 @@ export default function TeacherCard({ teacher }) {
               <div className={css.cardMainRightInfo}>
                 <p>
                   <svg width="16" height="16" stroke="yellow">
-                    <use href="public/sprite.svg#book" />
+                    <use href="/sprite.svg#book" />
                   </svg>{" "}
                   Lessons online
                 </p>
                 <p>Lessons done: {teacher.lessons_done}</p>
                 <p>
                   <svg width="16" height="16">
-                    <use href="public/sprite.svg#star" />
+                    <use href="/sprite.svg#star" />
                   </svg>
                   Rating: {teacher.rating}
                 </p>
@@ -102,7 +102,7 @@ export default function TeacherCard({ teacher }) {
                 stroke={isFavorite ? "#F4C550" : "#e2e2e2"}
                 fill={isFavorite ? "#F4C550" : "none"}
               >
-                <use href="public/sprite.svg#heart" />
+                <use href="/sprite.svg#heart" />
               </svg>
             </div>
           </div>
@@ -131,7 +131,7 @@ export default function TeacherCard({ teacher }) {
                     <div key={index} className={css.rewiesBlock}>
                       <div>
                         <svg width="44" height="44">
-                          <use href="public/sprite.svg#face" />
+                          <use href="/sprite.svg#face" />
                         </svg>
                         <p>
                           {review.reviewer_name}
@@ -141,7 +141,7 @@ export default function TeacherCard({ teacher }) {
                             height="16px"
                             style={{ verticalAlign: "middle" }}
                           >
-                            <use href="public/sprite.svg#star" />
+                            <use href="/sprite.svg#star" />
                           </svg>{" "}
                           {review.reviewer_rating}
                         </p>
