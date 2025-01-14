@@ -26,15 +26,17 @@ export default function Filters() {
 
   const areFiltersApplied = Object.values(filters).some(value => value !== "");
 
-  console.log("Filters:", filters);
-  console.log("Are filters applied:", areFiltersApplied);
-
   return (
     <div className={css.filters}>
       <ul className={css.filtersUl}>
         <li>
           <label htmlFor="language">Languages</label>
-          <select id="language" name="language" onChange={handleFilterChange}>
+          <select
+            id="language"
+            name="language"
+            value={filters.language}
+            onChange={handleFilterChange}
+          >
             <option value="">All Languages</option>
             {uniqueLanguages.map((language, index) => (
               <option key={index} value={language}>
@@ -46,7 +48,12 @@ export default function Filters() {
 
         <li>
           <label htmlFor="level">Level of knowledge</label>
-          <select id="level" name="level" onChange={handleFilterChange}>
+          <select
+            id="level"
+            name="level"
+            value={filters.level}
+            onChange={handleFilterChange}
+          >
             <option value="">All Levels</option>
             {uniqueLevels.map((level, index) => (
               <option key={index} value={level}>
@@ -57,8 +64,13 @@ export default function Filters() {
         </li>
 
         <li>
-          <label htmlFor="price">Price</label>
-          <select id="price" name="price" onChange={handleFilterChange}>
+          <label htmlFor="price_per_hour">Price</label>
+          <select
+            id="price"
+            name="price_per_hour"
+            value={filters.price_per_hour}
+            onChange={handleFilterChange}
+          >
             <option value="">All Prices</option>
             <option value="0-10">up to 10$</option>
             <option value="10-20">10$ - 20$</option>

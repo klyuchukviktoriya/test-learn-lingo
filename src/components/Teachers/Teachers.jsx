@@ -22,12 +22,18 @@ export default function Teachers() {
   return (
     <>
       <div className={css.teachersList}>
-        {teachers.slice(0, visibleCount).map((teacher, index) => (
-          <TeacherCard key={index} teacher={teacher} />
-        ))}
+        {teachers.length > 0 ? (
+          teachers
+            .slice(0, visibleCount)
+            .map((teacher, index) => (
+              <TeacherCard key={index} teacher={teacher} />
+            ))
+        ) : (
+          <p className={css.noResults}>Nothing found for your query.</p>
+        )}
       </div>
 
-      {visibleCount < teachers.length && (
+      {teachers.length > 0 && visibleCount < teachers.length && (
         <BigButton
           title="Load more"
           width="183px"
