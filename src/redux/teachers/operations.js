@@ -11,7 +11,6 @@ export const fetchTeachers = createAsyncThunk(
       );
       const data = await response.json();
       thunkAPI.dispatch(setTeachers(data));
-      console.log(data);
     } catch (error) {
       thunkAPI.dispatch(setError(error.message));
     } finally {

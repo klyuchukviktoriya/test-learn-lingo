@@ -24,7 +24,6 @@ export const saveFavorites = (userId, favorites) => async () => {
     const db = getDatabase();
     const favoritesRef = ref(db, `users/${userId}/favorites`);
     await set(favoritesRef, favorites);
-    console.log("Favorites successfully saved to Firebase.");
   } catch (error) {
     console.error("Error saving favorites to Firebase:", error);
   }

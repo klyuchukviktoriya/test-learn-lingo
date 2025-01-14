@@ -15,9 +15,8 @@ export default function BookTrialModal({ isOpen, onClose, teacher }) {
     resolver: yupResolver(bookingValidationSchema),
   });
 
-  const handleBookTrialClick = async data => {
+  const handleBookTrialClick = async ()=> {
     try {
-      console.log("Booking Data:", data);
       onClose();
     } catch (err) {
       console.error("Error during booking:", err);
