@@ -1,4 +1,5 @@
 import ReactModal from "react-modal";
+import { useEffect } from "react";
 import css from "./Modal.module.css";
 
 ReactModal.setAppElement("#root");
@@ -11,6 +12,18 @@ export default function Modal({
   title,
   description,
 }) {
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [isOpen]);
+
   return (
     <ReactModal
       isOpen={isOpen}
