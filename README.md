@@ -16,7 +16,7 @@ Favorites: A private page showing tutors added to the user's favorites (accessib
 ## Key Technologies  
 Frontend:  
 React, React Router, react-hook-form, yup, HTML, CSS,  
-JavaScript, AI, Spline, CSS Modules for styling, CSS Modules for styling.
+JavaScript, AI, Spline, CSS Modules for styling.
 Backend:  
 Firebase Authentication.  
 Firebase Realtime Database.  
